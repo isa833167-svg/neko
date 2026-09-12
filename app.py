@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import os
-import base64
 from datetime import datetime
 from streamlit_js_eval import streamlit_js_eval 
 
@@ -10,73 +9,60 @@ st.set_page_config(page_title="FORM NA ALI UMAR", page_icon="🖥️", layout="w
 FILE_NAME = "masu_aure.csv"
 ADMIN_PASSWORD = "ALI@123" 
 
-# ====== KARANTAR WALFA ======
-@st.cache_data
-def get_img_as_base64(file):
-    try:
-        with open(file, "rb") as f:
-            data = f.read()
-        return base64.b64encode(data).decode()
-    except:
-        return ""
-
-bg = get_img_as_base64("logo.jpg") # <-- SUNAN WALFA NAKA
-
-# ====== CSS MAI RUBUTU BAKI MAI GIRMA SOSAI ======
-st.markdown(f"""
+# ====== CSS MAI WALFA TA KAI TSAIYE + RUBUTU BAKI MAI GIRMA ======
+st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
-    html, body, [class*="css"] {{font-family: 'Poppins', sans-serif;}}
+    html, body, [class*="css"] {font-family: 'Poppins', sans-serif;}
     
-    /* 1. WALFA TA WEBSITE */
-    .stApp {{
-        background-image: url("data:image/jpeg;base64,{bg}");
+    /* 1. WALFA TA WEBSITE - HANYAR DA TA FI KYAUTA */
+    .stApp {
+        background-image: url("https://raw.githubusercontent.com/isa833167-svg/REPO_NAKA/main/logo.jpg");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-    }}
+    }
     
     /* 2. KATIN FARI MAI DUHU KADAN DON BAKI YA FITO */
-    .main-container {{
+    .main-container {
         max-width: 950px; 
         margin: 40px auto; 
-        background: rgba(255, 255, 255, 0.92); /* FARI MAI DUHU KADAN */
+        background: rgba(255, 255, 255, 0.92); 
         border-radius: 30px; 
         padding: 4rem; 
         box-shadow: 0 30px 70px rgba(0,0,0,0.5); 
-        border: 6px solid #000000; /* BAKI BORDER */
-    }}
+        border: 6px solid #000;
+    }
     
     /* 3. TITLE MAI BAKI MAI GIRMA SOSAI */
-    .title {{
+    .title {
         text-align: center; 
-        color: #000000; /* BAKI */
-        font-size: 65px; /* MAI GIRMA SOSAI */
+        color: #000;
+        font-size: 65px;
         font-weight: 900; 
         margin-bottom: 25px;
         text-transform: uppercase;
-        text-shadow: 2px 2px 4px rgba(255,255,255,0.8); /* INUWA FARI */
+        text-shadow: 2px 2px 4px white;
         letter-spacing: 4px;
-    }}
+    }
     
     /* 4. WELCOME MAI BAKI MAI KATO SOSAI */
-    .welcome {{
+    .welcome {
         text-align: center; 
-        color: #000000; /* BAKI */
-        font-size: 30px; /* MAI GIRMA SOSAI */
+        color: #000;
+        font-size: 30px;
         margin-bottom: 45px;
-        font-weight: 900; /* BOLD SOSAI */
-        line-height: 2.5; /* SARARI MAI YAWA */
+        font-weight: 900;
+        line-height: 2.5;
         white-space: pre-line; 
         text-transform: uppercase;
-        text-shadow: 1px 1px 3px rgba(255,255,255,0.8); /* INUWA FARI */
+        text-shadow: 1px 1px 3px white;
         letter-spacing: 2px;
-    }}
+    }
     
-    /* 5. INPUTS DA LABELS MAI BAKI */
-    label {{color: #000000 !important; font-weight: 900 !important; font-size: 28px !important; text-transform: uppercase;}}
+    label {color: #000000 !important; font-weight: 900 !important; font-size: 28px !important; text-transform: uppercase;}
     
-    .stTextInput>div>div>input, .stNumberInput>div>div>input {{
+    .stTextInput>div>div>input, .stNumberInput>div>div>input {
         border-radius: 18px; 
         border: 5px solid #000;
         background: white;
@@ -86,39 +72,25 @@ st.markdown(f"""
         padding: 20px;
         height: 4em;
         text-transform: capitalize;
-    }}
+    }
     
-    .stRadio > div {{background: white; padding: 25px; border-radius: 18px; border: 5px solid #000000;}}
-    .stRadio label {{font-size: 26px !important; font-weight: 900 !important; text-transform: uppercase; color: #000000 !important;}}
+    .stRadio > div {background: white; padding: 25px; border-radius: 18px; border: 5px solid #000;}
+    .stRadio label {font-size: 26px !important; font-weight: 900 !important; text-transform: uppercase; color: #000 !important;}
     
-    /* 6. BUTTON MAI BAKI MAI KATO */
-    .stButton>button {{
-        background: linear-gradient(90deg, #000000 0%, #333333 100%); /* BAKI ZUWA DUHU */
+    .stButton>button {
+        background: #000;
         color: white; 
         border-radius: 22px; 
         height: 5em; 
         width: 100%; 
-        font-size: 36px; /* MAI GIRMA SOSAI */
+        font-size: 36px;
         font-weight: 900; 
         border: none;
         margin-top: 35px;
         letter-spacing: 4px;
         text-transform: uppercase;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }}
-    .stButton>button:hover {{transform: scale(1.1); transition: 0.3s;}}
-    
-    .stAlert {{font-size: 26px !important; font-weight: 900 !important; text-transform: uppercase; color: #000000 !important;}}
-    
-    .stMetric {{background: white; padding: 20px; border-radius: 15px; border: 4px solid #000000;}}
-    .stMetric label {{font-size: 22px !important; color: #000 !important;}}
-    .stMetric div {{font-size: 45px !important; color: #000 !important; font-weight: 900 !important;}}
-    
-    @media (max-width: 950px) {{
-        .main-container {{padding: 2.5rem; margin: 20px;}}
-        .title {{font-size: 45px;}}
-        .welcome {{font-size: 24px;}}
-    }}
+    }
+    .stButton>button:hover {transform: scale(1.1); transition: 0.3s;}
     </style>
 """, unsafe_allow_html=True)
 
@@ -142,7 +114,6 @@ menu = st.sidebar.radio("📋 MENU", ["FORM NA REGISTER", "SHAFIN ADMIN 🔒"])
 
 if menu == "FORM NA REGISTER":
     st.markdown('<div class="main-container">', unsafe_allow_html=True)
-        
     st.markdown('<p class="title">🖥️ FORM NA ALI UMAR</p>', unsafe_allow_html=True)
     
     welcome_text = """INA MAIYI MUKU BARKA DA ZIYARTAR SHAFINA SUNANA ALI UMAR MUHAMMAD NI DALIBIN CYBER SECURITY NE WANNAN WEBSITE DIN NA KIR KIRESHINE DOMIN TEST DAKUMA GWAJE GWAJE NA HARKAR PYTHON PROGRAMMING 
@@ -174,7 +145,6 @@ SHEKARUNKA DAIDAI ZAIFADA MAKA KA KAI KAYI AURE NE KO BAKA KAIBA🙄
                 if shekaru >= 35: st.error("KAI KA WUCE AURE. KA YI GIRMA SOSAI 😂")
                 st.balloons()
             else: st.error("TAF, DA FATAN KA CIKA DUKKAN BAYANAI")
-    
     st.markdown('</div>', unsafe_allow_html=True)
 
 elif menu == "SHAFIN ADMIN 🔒":

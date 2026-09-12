@@ -22,13 +22,13 @@ def get_img_as_base64(file):
 
 bg = get_img_as_base64("longo.jpg") 
 
-# ====== CSS MAI WALFA DA RUBUTU MAI GIRMA ======
+# ====== CSS MAI RUBUTU MAI JA MAI GIRMA ======
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
     html, body, [class*="css"] {{font-family: 'Poppins', sans-serif;}}
     
-    /* 1. WALFA TA WEBSITE DIN BAKI DAYA */
+    /* 1. WALFA TA WEBSITE */
     .stApp {{
         background-image: url("data:image/jpeg;base64,{bg}");
         background-size: cover;
@@ -36,78 +36,83 @@ st.markdown(f"""
         background-attachment: fixed;
     }}
     
-    /* 2. KATIN FARI MAI DUHU KADAN DON RUBUTU YA FITO */
+    /* 2. KATIN FARI MAI DUHU SOSAI DON JA YA FITO */
     .main-container {{
-        max-width: 850px; 
+        max-width: 900px; 
         margin: 40px auto; 
-        background: rgba(255, 255, 255, 0.95); 
+        background: rgba(0, 0, 0, 0.7); /* BAKI MAI DUHU 70% */
         border-radius: 30px; 
-        padding: 3rem; 
-        box-shadow: 0 25px 60px rgba(0,0,0,0.6); 
-        border: 5px solid #FFC107;
+        padding: 3.5rem; 
+        box-shadow: 0 25px 60px rgba(255,0,0,0.4); 
+        border: 5px solid #FF0000; /* JA BORDER */
     }}
     
-    /* 3. RUBUTU MAI GIRMA SOSAI CAPITAL */
+    /* 3. TITLE MAI JA MAI GIRMA */
     .title {{
         text-align: center; 
-        color: #0D47A1; 
-        font-size: 48px; 
+        color: #FF0000; /* JA */
+        font-size: 55px; /* MAI GIRMA SOSAI */
         font-weight: 900; 
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         text-transform: uppercase;
+        text-shadow: 3px 3px 6px black; /* INUWA DON YA FITO */
     }}
     
+    /* 4. WELCOME MAI JA MAI KATO SOSAI */
     .welcome {{
         text-align: center; 
-        color: #000; 
-        font-size: 18px; /* NA KARA GIRMA */
-        margin-bottom: 35px;
-        font-weight: 800;
-        line-height: 1.8; /* SARARI TSAYIN LAYI */
-        white-space: pre-line; /* DON YA MUTSA LAYI */
-        text-transform: uppercase; /* CAPITAL BAKI DAYA */
+        color: #FF0000; /* JA */
+        font-size: 26px; /* NA KARA GIRMA SOSAI */
+        margin-bottom: 40px;
+        font-weight: 900; /* BOLD SOSAI */
+        line-height: 2.2; /* SARARI MAI YAWA */
+        white-space: pre-line; 
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px black; /* INUWA DON YA FITO AKAN WALFA */
+        letter-spacing: 1px;
     }}
     
-    /* 4. INPUTS DA LABELS MAI KATO */
-    label {{color: #0D47A1 !important; font-weight: 900 !important; font-size: 22px !important; text-transform: uppercase;}}
+    /* 5. INPUTS DA LABELS MAI JA */
+    label {{color: #FF0000 !important; font-weight: 900 !important; font-size: 24px !important; text-transform: uppercase; text-shadow: 1px 1px 2px black;}}
     
     .stTextInput>div>div>input, .stNumberInput>div>div>input {{
         border-radius: 15px; 
-        border: 4px solid #0D47A1;
-        background: white;
+        border: 5px solid #FF0000;
+        background: rgba(255,255,255,0.95);
         color: black;
         font-weight: 900;
-        font-size: 22px; 
-        padding: 16px;
-        height: 3.5em;
+        font-size: 24px; 
+        padding: 18px;
+        height: 3.8em;
         text-transform: capitalize;
     }}
     
-    .stRadio > div {{background: #FFF8E1; padding: 20px; border-radius: 15px; border: 3px solid #FFC107;}}
-    .stRadio label {{font-size: 20px !important; font-weight: 800 !important; text-transform: uppercase;}}
+    .stRadio > div {{background: rgba(255,255,255,0.95); padding: 22px; border-radius: 15px; border: 4px solid #FF0000;}}
+    .stRadio label {{font-size: 22px !important; font-weight: 900 !important; text-transform: uppercase; color: #0D47A1 !important;}}
     
-    /* 5. BUTTON MAI KATO SOSAI */
+    /* 6. BUTTON MAI JA MAI KATO */
     .stButton>button {{
-        background: linear-gradient(90deg, #FFC107 0%, #0D47A1 100%); 
+        background: linear-gradient(90deg, #FF0000 0%, #8B0000 100%); /* JA ZUWA DUHUN JA */
         color: white; 
         border-radius: 20px; 
-        height: 4.5em; 
+        height: 4.8em; 
         width: 100%; 
-        font-size: 28px; /* MAI GIRMA SOSAI */
+        font-size: 32px; /* MAI GIRMA SOSAI */
         font-weight: 900; 
         border: none;
-        margin-top: 25px;
-        letter-spacing: 2px;
+        margin-top: 30px;
+        letter-spacing: 3px;
         text-transform: uppercase;
+        box-shadow: 0 8px 20px rgba(255,0,0,0.5);
     }}
-    .stButton>button:hover {{transform: scale(1.05); transition: 0.3s;}}
+    .stButton>button:hover {{transform: scale(1.08); transition: 0.3s;}}
     
-    .stAlert {{font-size: 20px !important; font-weight: 800 !important; text-transform: uppercase;}}
+    .stAlert {{font-size: 22px !important; font-weight: 900 !important; text-transform: uppercase;}}
     
-    @media (max-width: 850px) {{
-        .main-container {{padding: 1.8rem; margin: 15px;}}
-        .title {{font-size: 32px;}}
-        .welcome {{font-size: 15px;}}
+    @media (max-width: 900px) {{
+        .main-container {{padding: 2rem; margin: 15px;}}
+        .title {{font-size: 38px;}}
+        .welcome {{font-size: 20px;}}
     }}
     </style>
 """, unsafe_allow_html=True)
@@ -140,7 +145,7 @@ if menu == "FORM NA REGISTER":
 ZAKU IYA CIKA SUNANKU DA SHEKARUNKU WANNAN WEBSITE DIN INDAI KAFADA MASA 
 SHEKARUNKA DAIDAI ZAIFADA MAKA KA KAI KAYI AURE NE KO BAKA KAIBA🙄
 
-🤣🤣🤣😄😂😂😂 WANNAN SHINE LOKACIN FARKO DANA FARA KIR KIRAN ABU 
+🤣😄😂 WANNAN SHINE LOKACIN FARKO DANA FARA KIR KIRAN ABU 
 
 🖥️🖥️🖥️🙏 INA MAI YIMUKU GODIYA DA ZIYARTAR SHAFINA🫣
 

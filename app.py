@@ -1,14 +1,13 @@
 import streamlit as st
-
-st.image("logo.png", width=150)
-st.title("Form Na Masu Aure")
-import streamlit as st
 import pandas as pd
 import os
 from datetime import datetime
-from streamlit_js_eval import streamlit_js_eval # Wannan shine zai dauko bayanan waya
+from streamlit_js_eval import streamlit_js_eval
 
-st.set_page_config(page_title="Form Na Neko", page_icon="💍", layout="wide") # wide yana kyautatawa a waya
+st.set_page_config(page_title="Form Na Masu Aure", layout="centered")
+
+st.image("logo.png", width=150)
+st.title("Form Na Masu Aure")
 
 FILE_NAME = "masu_aure.csv"
 ADMIN_PASSWORD = "ALI@123" 

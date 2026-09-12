@@ -7,141 +7,141 @@ from streamlit_js_eval import streamlit_js_eval
 
 st.set_page_config(page_title="FORM NA ALI UMAR", page_icon="🖥️", layout="wide")
 
-FILE_NAME = "MASU_AURE.CSV"
+FILE_NAME = "masu_aure.csv"
 ADMIN_PASSWORD = "ALI@123" 
 
 # ====== KARANTAR WALFA ======
 @st.cache_data
-def GET_IMG_AS_BASE64(FILE):
-    TRY:
-        WITH OPEN(FILE, "RB") AS F:
-            DATA = F.READ()
-        RETURN BASE64.B64ENCODE(DATA).DECODE()
-    EXCEPT:
-        RETURN ""
+def get_img_as_base64(file):
+    try:
+        with open(file, "rb") as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+    except:
+        return ""
 
-BG = GET_IMG_AS_BASE64("LOGO.JPG") # <-- NA CANZA ZUWA LOGO.JPG KAMAR YADDA KAKE DA SHI
+bg = get_img_as_base64("logo.jpg") # <-- NA GYARA ZUWA LOGO.JPG
 
 # ====== CSS MAI RUBUTU MAI JA MAI GIRMA ======
-ST.MARKDOWN(F"""
-    <STYLE>
-    @IMPORT URL('HTTPS://FONTS.GOOGLEAPIS.COM/CSS2?FAMILY=POPPINS:WGHT@400;600;700;800;900&DIPLAY=SWAP');
-    HTML, BODY, [CLASS*="CSS"] {{FONT-FAMILY: 'POPPINS', SANS-SERIF;}}
+st.markdown(f"""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+    html, body, [class*="css"] {{font-family: 'Poppins', sans-serif;}}
     
     /* 1. WALFA TA WEBSITE */
-    .STAPP {{
-        BACKGROUND-IMAGE: URL("DATA:IMAGE/JPEG;BASE64,{BG}");
-        BACKGROUND-SIZE: COVER;
-        BACKGROUND-POSITION: CENTER;
-        BACKGROUND-ATTACHMENT: FIXED;
+    .stApp {{
+        background-image: url("data:image/jpeg;base64,{bg}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }}
     
     /* 2. KATIN BAKI MAI DUHU SOSAI DON JA YA FITO */
-    .MAIN-CONTAINER {{
-        MAX-WIDTH: 900PX; 
-        MARGIN: 40PX AUTO; 
-        BACKGROUND: RGBA(0, 0, 0, 0.8); /* BAKI MAI DUHU 80% */
-        BORDER-RADIUS: 30PX; 
-        PADDING: 3.5REM; 
-        BOX-SHADOW: 0 25PX 60PX RGBA(255,0,0,0.4); 
-        BORDER: 5PX SOLID #FF0000; /* JA BORDER */
+    .main-container {{
+        max-width: 900px; 
+        margin: 40px auto; 
+        background: rgba(0, 0, 0, 0.8); /* BAKI MAI DUHU 80% */
+        border-radius: 30px; 
+        padding: 3.5rem; 
+        box-shadow: 0 25px 60px rgba(255,0,0,0.4); 
+        border: 5px solid #FF0000; /* JA BORDER */
     }}
     
     /* 3. TITLE MAI JA MAI GIRMA */
-    .TITLE {{
-        TEXT-ALIGN: CENTER; 
-        COLOR: #FF0000; /* JA */
-        FONT-SIZE: 55PX; /* MAI GIRMA SOSAI */
-        FONT-WEIGHT: 900; 
-        MARGIN-BOTTOM: 20PX;
-        TEXT-TRANSFORM: UPPERCASE;
-        TEXT-SHADOW: 3PX 3PX 6PX BLACK; /* INUWA DON YA FITO */
-        LETTER-SPACING: 3PX;
+    .title {{
+        text-align: center; 
+        color: #FF0000; /* JA */
+        font-size: 55px; /* MAI GIRMA SOSAI */
+        font-weight: 900; 
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-shadow: 3px 3px 6px black; /* INUWA DON YA FITO */
+        letter-spacing: 3px;
     }}
     
     /* 4. WELCOME MAI JA MAI KATO SOSAI */
-    .WELCOME {{
-        TEXT-ALIGN: CENTER; 
-        COLOR: #FF0000; /* JA */
-        FONT-SIZE: 26PX; /* NA KARA GIRMA SOSAI */
-        MARGIN-BOTTOM: 40PX;
-        FONT-WEIGHT: 900; /* BOLD SOSAI */
-        LINE-HEIGHT: 2.2; /* SARARI MAI YAWA */
-        WHITE-SPACE: PRE-LINE; 
-        TEXT-TRANSFORM: UPPERCASE;
-        TEXT-SHADOW: 2PX 2PX 4PX BLACK; /* INUWA DON YA FITO AKAN WALFA */
-        LETTER-SPACING: 1PX;
+    .welcome {{
+        text-align: center; 
+        color: #FF0000; /* JA */
+        font-size: 26px; /* NA KARA GIRMA SOSAI */
+        margin-bottom: 40px;
+        font-weight: 900; /* BOLD SOSAI */
+        line-height: 2.2; /* SARARI MAI YAWA */
+        white-space: pre-line; 
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px black; /* INUWA DON YA FITO AKAN WALFA */
+        letter-spacing: 1px;
     }}
     
     /* 5. INPUTS DA LABELS MAI JA */
-    LABEL {{COLOR: #FF0000 !IMPORTANT; FONT-WEIGHT: 900 !IMPORTANT; FONT-SIZE: 24PX !IMPORTANT; TEXT-TRANSFORM: UPPERCASE; TEXT-SHADOW: 1PX 1PX 2PX BLACK;}}
+    label {{color: #FF0000 !important; font-weight: 900 !important; font-size: 24px !important; text-transform: uppercase; text-shadow: 1px 1px 2px black;}}
     
-    .STTEXTINPUT>DIV>DIV>INPUT, .STNUMBERINPUT>DIV>DIV>INPUT {{
-        BORDER-RADIUS: 15PX; 
-        BORDER: 5PX SOLID #FF0000;
-        BACKGROUND: RGBA(255,255,255,0.95);
-        COLOR: BLACK;
-        FONT-WEIGHT: 900;
-        FONT-SIZE: 24PX; 
-        PADDING: 18PX;
-        HEIGHT: 3.8EM;
-        TEXT-TRANSFORM: CAPITALIZE;
+    .stTextInput>div>div>input, .stNumberInput>div>div>input {{
+        border-radius: 15px; 
+        border: 5px solid #FF0000;
+        background: rgba(255,255,255,0.95);
+        color: black;
+        font-weight: 900;
+        font-size: 24px; 
+        padding: 18px;
+        height: 3.8em;
+        text-transform: capitalize;
     }}
     
-    .STRADIO > DIV {{BACKGROUND: RGBA(255,255,255,0.95); PADDING: 22PX; BORDER-RADIUS: 15PX; BORDER: 4PX SOLID #FF0000;}}
-    .STRADIO LABEL {{FONT-SIZE: 22PX !IMPORTANT; FONT-WEIGHT: 900 !IMPORTANT; TEXT-TRANSFORM: UPPERCASE; COLOR: #0D47A1 !IMPORTANT;}}
+    .stRadio > div {{background: rgba(255,255,255,0.95); padding: 22px; border-radius: 15px; border: 4px solid #FF0000;}}
+    .stRadio label {{font-size: 22px !important; font-weight: 900 !important; text-transform: uppercase; color: #0D47A1 !important;}}
     
     /* 6. BUTTON MAI JA MAI KATO */
-    .STBUTTON>BUTTON {{
-        BACKGROUND: LINEAR-GRADIENT(90DEG, #FF0000 0%, #8B0000 100%); /* JA ZUWA DUHUN JA */
-        COLOR: WHITE; 
-        BORDER-RADIUS: 20PX; 
-        HEIGHT: 4.8EM; 
-        WIDTH: 100%; 
-        FONT-SIZE: 32PX; /* MAI GIRMA SOSAI */
-        FONT-WEIGHT: 900; 
-        BORDER: NONE;
-        MARGIN-TOP: 30PX;
-        LETTER-SPACING: 3PX;
-        TEXT-TRANSFORM: UPPERCASE;
-        BOX-SHADOW: 0 8PX 20PX RGBA(255,0,0,0.5);
+    .stButton>button {{
+        background: linear-gradient(90deg, #FF0000 0%, #8B0000 100%); /* JA ZUWA DUHUN JA */
+        color: white; 
+        border-radius: 20px; 
+        height: 4.8em; 
+        width: 100%; 
+        font-size: 32px; /* MAI GIRMA SOSAI */
+        font-weight: 900; 
+        border: none;
+        margin-top: 30px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        box-shadow: 0 8px 20px rgba(255,0,0,0.5);
     }}
-    .STBUTTON>BUTTON:HOVER {{TRANSFORM: SCALE(1.08); TRANSITION: 0.3S;}}
+    .stButton>button:hover {{transform: scale(1.08); transition: 0.3s;}}
     
-    .STALERT {{FONT-SIZE: 22PX !IMPORTANT; FONT-WEIGHT: 900 !IMPORTANT; TEXT-TRANSFORM: UPPERCASE;}}
+    .stAlert {{font-size: 22px !important; font-weight: 900 !important; text-transform: uppercase;}}
     
-    @MEDIA (MAX-WIDTH: 900PX) {{
-        .MAIN-CONTAINER {{PADDING: 2REM; MARGIN: 15PX;}}
-        .TITLE {{FONT-SIZE: 38PX;}}
-        .WELCOME {{FONT-SIZE: 20PX;}}
+    @media (max-width: 900px) {{
+        .main-container {{padding: 2rem; margin: 15px;}}
+        .title {{font-size: 38px;}}
+        .welcome {{font-size: 20px;}}
     }}
-    </STYLE>
-""", UNSAFE_ALLOW_HTML=TRUE)
+    </style>
+""", unsafe_allow_html=True)
 
-DEF SAVE_USER(SUNA, JINSI, SHEKARU, LOKACI, DEVICE_INFO):
-    IF NOT OS.PATH.EXISTS(FILE_NAME):
-        DF = PD.DATAFRAME(COLUMNS=["SUNA", "JINSI", "SHEKARU", "LOKACIN REGISTER", "DEVICE/BROWSER"])
-    ELSE:
-        DF = PD.READ_CSV(FILE_NAME)
-    NEW_DATA = PD.DATAFRAME([[SUNA, JINSI, SHEKARU, LOKACI, DEVICE_INFO]], COLUMNS=["SUNA", "JINSI", "SHEKARU", "LOKACIN REGISTER", "DEVICE/BROWSER"])
-    DF = PD.CONCAT([DF, NEW_DATA], IGNORE_INDEX=TRUE)
-    DF.TO_CSV(FILE_NAME, INDEX=FALSE)
+def save_user(suna, jinsi, shekaru, lokaci, device_info):
+    if not os.path.exists(FILE_NAME):
+        df = pd.DataFrame(columns=["SUNA", "JINSI", "SHEKARU", "LOKACIN REGISTER", "DEVICE/BROWSER"])
+    else:
+        df = pd.read_csv(FILE_NAME)
+    new_data = pd.DataFrame([[suna, jinsi, shekaru, lokaci, device_info]], columns=["SUNA", "JINSI", "SHEKARU", "LOKACIN REGISTER", "DEVICE/BROWSER"])
+    df = pd.concat([df, new_data], ignore_index=True)
+    df.to_csv(FILE_NAME, index=False)
 
-DEF LOAD_USERS():
-    IF OS.PATH.EXISTS(FILE_NAME):
-        RETURN PD.READ_CSV(FILE_NAME)
-    ELSE:
-        RETURN PD.DATAFRAME(COLUMNS=["SUNA", "JINSI", "SHEKARU", "LOKACIN REGISTER", "DEVICE/BROWSER"])
+def load_users():
+    if os.path.exists(FILE_NAME):
+        return pd.read_csv(FILE_NAME)
+    else:
+        return pd.DataFrame(columns=["SUNA", "JINSI", "SHEKARU", "LOKACIN REGISTER", "DEVICE/BROWSER"])
 
-DEVICE_INFO = STREAMLIT_JS_EVAL(JS_EXPRESSIONS='NAVIGATOR.USERAGENT', KEY='UA')
-MENU = ST.SIDEBAR.RADIO("📋 MENU", ["FORM NA REGISTER", "SHAFIN ADMIN 🔒"])
+device_info = streamlit_js_eval(js_expressions='navigator.userAgent', key='ua')
+menu = st.sidebar.radio("📋 MENU", ["FORM NA REGISTER", "SHAFIN ADMIN 🔒"])
 
-IF MENU == "FORM NA REGISTER":
-    ST.MARKDOWN('<DIV CLASS="MAIN-CONTAINER">', UNSAFE_ALLOW_HTML=TRUE)
+if menu == "FORM NA REGISTER":
+    st.markdown('<div class="main-container">', unsafe_allow_html=True)
         
-    ST.MARKDOWN('<P CLASS="TITLE">🖥️ FORM NA ALI UMAR</P>', UNSAFE_ALLOW_HTML=TRUE)
+    st.markdown('<p class="title">🖥️ FORM NA ALI UMAR</p>', unsafe_allow_html=True)
     
-    WELCOME_TEXT = """INA MAIYI MUKU BARKA DA ZIYARTAR SHAFINA SUNANA ALI UMAR MUHAMMAD NI DALIBIN CYBER SECURITY NE WANNAN WEBSITE DIN NA KIR KIRESHINE DOMIN TEST DAKUMA GWAJE GWAJE NA HARKAR PYTHON PROGRAMMING 
+    welcome_text = """INA MAIYI MUKU BARKA DA ZIYARTAR SHAFINA SUNANA ALI UMAR MUHAMMAD NI DALIBIN CYBER SECURITY NE WANNAN WEBSITE DIN NA KIR KIRESHINE DOMIN TEST DAKUMA GWAJE GWAJE NA HARKAR PYTHON PROGRAMMING 
 
 ZAKU IYA CIKA SUNANKU DA SHEKARUNKU WANNAN WEBSITE DIN INDAI KAFADA MASA 
 SHEKARUNKA DAIDAI ZAIFADA MAKA KA KAI KAYI AURE NE KO BAKA KAIBA🙄
@@ -152,41 +152,41 @@ SHEKARUNKA DAIDAI ZAIFADA MAKA KA KAI KAYI AURE NE KO BAKA KAIBA🙄
 
 🙏NAGODE"""
     
-    ST.MARKDOWN(F'<P CLASS="WELCOME">{WELCOME_TEXT}</P>', UNSAFE_ALLOW_HTML=TRUE)
+    st.markdown(f'<p class="welcome">{welcome_text}</p>', unsafe_allow_html=True)
 
-    WITH ST.FORM("REGISTER_FORM", CLEAR_ON_SUBMIT=TRUE):
-        SUNA = ST.TEXT_INPUT("1. MEYE SUNANKA?")
-        SHEKARU = ST.NUMBER_INPUT("2. SHEKARUNKA NAWA?", MIN_VALUE=1, MAX_VALUE=100, STEP=1)
-        JINSI = ST.RADIO("3. KAI NAMIJI NE KO MACE?", ["NAMIJI", "MACE"], HORIZONTAL=TRUE)
-        SUBMITTED = ST.FORM_SUBMIT_BUTTON("AIKA FORM 🚀")
+    with st.form("register_form", clear_on_submit=True):
+        suna = st.text_input("1. MEYE SUNANKA?")
+        shekaru = st.number_input("2. SHEKARUNKA NAWA?", min_value=1, max_value=100, step=1)
+        jinsi = st.radio("3. KAI NAMIJI NE KO MACE?", ["NAMIJI", "MACE"], horizontal=True)
+        submitted = st.form_submit_button("AIKA FORM 🚀")
 
-        IF SUBMITTED:
-            IF SUNA AND SHEKARU:
-                LOKACI = DATETIME.NOW().STRFTIME("%Y-%M-%D %H:%M:%S")
-                SAVE_USER(SUNA, JINSI, SHEKARU, LOKACI, DEVICE_INFO)
-                ST.SUCCESS(F"BARKA DA ZUWA {SUNA}!", ICON="✅")
-                IF SHEKARU >= 18: ST.INFO(F"AN KARBE KA! KA GIRMA KAKAI AURE ✅")
-                ELSE: ST.WARNING(F"BAKA KAI AUREBA. KAJIRA SHEKARA {18 - SHEKARU} TUKUNNAN ❌")
-                IF SHEKARU >= 35: ST.ERROR("KAI KA WUCE AURE. KA YI GIRMA SOSAI 😂")
-                ST.BALLOONS()
-            ELSE: ST.ERROR("TAF, DA FATAN KA CIKA DUKKAN BAYANAI")
+        if submitted:
+            if suna and shekaru:
+                lokaci = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                save_user(suna, jinsi, shekaru, lokaci, device_info)
+                st.success(f"BARKA DA ZUWA {suna}!", icon="✅")
+                if shekaru >= 18: st.info(f"AN KARBE KA! KA GIRMA KAKAI AURE ✅")
+                else: st.warning(f"BAKA KAI AUREBA. KAJIRA SHEKARA {18 - shekaru} TUKUNNAN ❌")
+                if shekaru >= 35: st.error("KAI KA WUCE AURE. KA YI GIRMA SOSAI 😂")
+                st.balloons()
+            else: st.error("TAF, DA FATAN KA CIKA DUKKAN BAYANAI")
     
-    ST.MARKDOWN('</DIV>', UNSAFE_ALLOW_HTML=TRUE)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-ELIF MENU == "SHAFIN ADMIN 🔒":
-    ST.MARKDOWN('<DIV CLASS="MAIN-CONTAINER">', UNSAFE_ALLOW_HTML=TRUE)
-    ST.MARKDOWN('<P CLASS="TITLE">🔐 SHAFIN ADMIN</P>', UNSAFE_ALLOW_HTML=TRUE)
-    PASSWORD = ST.TEXT_INPUT("SHIGAR DA PASSWORD NA ADMIN", TYPE="PASSWORD")
-    IF PASSWORD == ADMIN_PASSWORD:
-        DF = LOAD_USERS()
-        IF NOT DF.EMPTY:
-            ST.SUCCESS("BARKA DA ZUWA ADMIN!", ICON="👑")
-            COL1, COL2, COL3 = ST.COLUMNS(3)
-            WITH COL1: ST.METRIC("JIMILLA", LEN(DF))
-            WITH COL2: ST.METRIC("MAZAJE", LEN(DF[DF["JINSI"] == "NAMIJI"]))
-            WITH COL3: ST.METRIC("MATA", LEN(DF[DF["JINSI"] == "MACE"]))
-            ST.DATAFRAME(DF, USE_CONTAINER_WIDTH=TRUE)
-            ST.DOWNLOAD_BUTTON("📥 SAUKE DATA", DF.TO_CSV(INDEX=FALSE).ENCODE('UTF-8'), "MASU_AURE.CSV", "TEXT/CSV")
-        ELSE: ST.INFO("BABU WANDA YA YI REGISTER TUKUNA")
-    ELIF PASSWORD: ST.ERROR("PASSWORD BA DAIDAI BA NE ❌")
-    ST.MARKDOWN('</DIV>', UNSAFE_ALLOW_HTML=TRUE)
+elif menu == "SHAFIN ADMIN 🔒":
+    st.markdown('<div class="main-container">', unsafe_allow_html=True)
+    st.markdown('<p class="title">🔐 SHAFIN ADMIN</p>', unsafe_allow_html=True)
+    password = st.text_input("SHIGAR DA PASSWORD NA ADMIN", type="password")
+    if password == ADMIN_PASSWORD:
+        df = load_users()
+        if not df.empty:
+            st.success("BARKA DA ZUWA ADMIN!", icon="👑")
+            col1, col2, col3 = st.columns(3)
+            with col1: st.metric("JIMILLA", len(df))
+            with col2: st.metric("MAZAJE", len(df[df["JINSI"] == "NAMIJI"]))
+            with col3: st.metric("MATA", len(df[df["JINSI"] == "MACE"]))
+            st.dataframe(df, use_container_width=True)
+            st.download_button("📥 SAUKE DATA", df.to_csv(index=False).encode('utf-8'), "masu_aure.csv", "text/csv")
+        else: st.info("BABU WANDA YA YI REGISTER TUKUNA")
+    elif password: st.error("PASSWORD BA DAIDAI BA NE ❌")
+    st.markdown('</div>', unsafe_allow_html=True)

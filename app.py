@@ -20,9 +20,9 @@ def get_img_as_base64(file):
     except:
         return ""
 
-bg = get_img_as_base64("logo.jpg") # <-- NA GYARA ZUWA LOGO.JPG
+bg = get_img_as_base64("logo.jpg") # <-- SUNAN WALFA NAKA
 
-# ====== CSS MAI RUBUTU MAI JA MAI GIRMA ======
+# ====== CSS MAI RUBUTU BAKI MAI GIRMA SOSAI ======
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
@@ -36,84 +36,88 @@ st.markdown(f"""
         background-attachment: fixed;
     }}
     
-    /* 2. KATIN BAKI MAI DUHU SOSAI DON JA YA FITO */
+    /* 2. KATIN FARI MAI DUHU KADAN DON BAKI YA FITO */
     .main-container {{
-        max-width: 900px; 
+        max-width: 950px; 
         margin: 40px auto; 
-        background: rgba(0, 0, 0, 0.8); /* BAKI MAI DUHU 80% */
+        background: rgba(255, 255, 255, 0.92); /* FARI MAI DUHU KADAN */
         border-radius: 30px; 
-        padding: 3.5rem; 
-        box-shadow: 0 25px 60px rgba(255,0,0,0.4); 
-        border: 5px solid #FF0000; /* JA BORDER */
+        padding: 4rem; 
+        box-shadow: 0 30px 70px rgba(0,0,0,0.5); 
+        border: 6px solid #000000; /* BAKI BORDER */
     }}
     
-    /* 3. TITLE MAI JA MAI GIRMA */
+    /* 3. TITLE MAI BAKI MAI GIRMA SOSAI */
     .title {{
         text-align: center; 
-        color: #FF0000; /* JA */
-        font-size: 55px; /* MAI GIRMA SOSAI */
+        color: #000000; /* BAKI */
+        font-size: 65px; /* MAI GIRMA SOSAI */
         font-weight: 900; 
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         text-transform: uppercase;
-        text-shadow: 3px 3px 6px black; /* INUWA DON YA FITO */
-        letter-spacing: 3px;
+        text-shadow: 2px 2px 4px rgba(255,255,255,0.8); /* INUWA FARI */
+        letter-spacing: 4px;
     }}
     
-    /* 4. WELCOME MAI JA MAI KATO SOSAI */
+    /* 4. WELCOME MAI BAKI MAI KATO SOSAI */
     .welcome {{
         text-align: center; 
-        color: #FF0000; /* JA */
-        font-size: 26px; /* NA KARA GIRMA SOSAI */
-        margin-bottom: 40px;
+        color: #000000; /* BAKI */
+        font-size: 30px; /* MAI GIRMA SOSAI */
+        margin-bottom: 45px;
         font-weight: 900; /* BOLD SOSAI */
-        line-height: 2.2; /* SARARI MAI YAWA */
+        line-height: 2.5; /* SARARI MAI YAWA */
         white-space: pre-line; 
         text-transform: uppercase;
-        text-shadow: 2px 2px 4px black; /* INUWA DON YA FITO AKAN WALFA */
-        letter-spacing: 1px;
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.8); /* INUWA FARI */
+        letter-spacing: 2px;
     }}
     
-    /* 5. INPUTS DA LABELS MAI JA */
-    label {{color: #FF0000 !important; font-weight: 900 !important; font-size: 24px !important; text-transform: uppercase; text-shadow: 1px 1px 2px black;}}
+    /* 5. INPUTS DA LABELS MAI BAKI */
+    label {{color: #000000 !important; font-weight: 900 !important; font-size: 28px !important; text-transform: uppercase;}}
     
     .stTextInput>div>div>input, .stNumberInput>div>div>input {{
-        border-radius: 15px; 
-        border: 5px solid #FF0000;
-        background: rgba(255,255,255,0.95);
+        border-radius: 18px; 
+        border: 5px solid #000;
+        background: white;
         color: black;
         font-weight: 900;
-        font-size: 24px; 
-        padding: 18px;
-        height: 3.8em;
+        font-size: 28px; 
+        padding: 20px;
+        height: 4em;
         text-transform: capitalize;
     }}
     
-    .stRadio > div {{background: rgba(255,255,255,0.95); padding: 22px; border-radius: 15px; border: 4px solid #FF0000;}}
-    .stRadio label {{font-size: 22px !important; font-weight: 900 !important; text-transform: uppercase; color: #0D47A1 !important;}}
+    .stRadio > div {{background: white; padding: 25px; border-radius: 18px; border: 5px solid #000000;}}
+    .stRadio label {{font-size: 26px !important; font-weight: 900 !important; text-transform: uppercase; color: #000000 !important;}}
     
-    /* 6. BUTTON MAI JA MAI KATO */
+    /* 6. BUTTON MAI BAKI MAI KATO */
     .stButton>button {{
-        background: linear-gradient(90deg, #FF0000 0%, #8B0000 100%); /* JA ZUWA DUHUN JA */
+        background: linear-gradient(90deg, #000000 0%, #333333 100%); /* BAKI ZUWA DUHU */
         color: white; 
-        border-radius: 20px; 
-        height: 4.8em; 
+        border-radius: 22px; 
+        height: 5em; 
         width: 100%; 
-        font-size: 32px; /* MAI GIRMA SOSAI */
+        font-size: 36px; /* MAI GIRMA SOSAI */
         font-weight: 900; 
         border: none;
-        margin-top: 30px;
-        letter-spacing: 3px;
+        margin-top: 35px;
+        letter-spacing: 4px;
         text-transform: uppercase;
-        box-shadow: 0 8px 20px rgba(255,0,0,0.5);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }}
-    .stButton>button:hover {{transform: scale(1.08); transition: 0.3s;}}
+    .stButton>button:hover {{transform: scale(1.1); transition: 0.3s;}}
     
-    .stAlert {{font-size: 22px !important; font-weight: 900 !important; text-transform: uppercase;}}
+    .stAlert {{font-size: 26px !important; font-weight: 900 !important; text-transform: uppercase; color: #000000 !important;}}
     
-    @media (max-width: 900px) {{
-        .main-container {{padding: 2rem; margin: 15px;}}
-        .title {{font-size: 38px;}}
-        .welcome {{font-size: 20px;}}
+    .stMetric {{background: white; padding: 20px; border-radius: 15px; border: 4px solid #000000;}}
+    .stMetric label {{font-size: 22px !important; color: #000 !important;}}
+    .stMetric div {{font-size: 45px !important; color: #000 !important; font-weight: 900 !important;}}
+    
+    @media (max-width: 950px) {{
+        .main-container {{padding: 2.5rem; margin: 20px;}}
+        .title {{font-size: 45px;}}
+        .welcome {{font-size: 24px;}}
     }}
     </style>
 """, unsafe_allow_html=True)

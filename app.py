@@ -5,12 +5,12 @@ import base64
 from datetime import datetime
 from streamlit_js_eval import streamlit_js_eval 
 
-st.set_page_config(page_title="Form Na Neko", page_icon="🦜", layout="wide")
+st.set_page_config(page_title="Form Na Ali Umar", page_icon="🖥️", layout="wide")
 
 FILE_NAME = "masu_aure.csv"
 ADMIN_PASSWORD = "ALI@123" 
 
-# ====== KARANTAR LOGO KAWAI ======
+# ====== KARANTAR WALFA ======
 @st.cache_data
 def get_img_as_base64(file):
     try:
@@ -20,96 +20,94 @@ def get_img_as_base64(file):
     except:
         return ""
 
-logo = get_img_as_base64("logo.png") 
+bg = get_img_as_base64("longo.jpg") 
 
-# ====== CSS MAI FARI - BABU BACKGROUND ======
+# ====== CSS MAI WALFA DA RUBUTU MAI GIRMA ======
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
     html, body, [class*="css"] {{font-family: 'Poppins', sans-serif;}}
     
-    /* 1. NA SANYA BACKGROUND YA ZAMA FARINE KAWAI */
+    /* 1. WALFA TA WEBSITE DIN BAKI DAYA */
     .stApp {{
-        background: #F5F7FA; /* Launi mai sanyi */
+        background-image: url("data:image/jpeg;base64,{bg}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }}
     
-    /* 2. KATIN FARI MAI GIRMA */
+    /* 2. KATIN FARI MAI DUHU KADAN DON RUBUTU YA FITO */
     .main-container {{
-        max-width: 750px; 
-        margin: 50px auto; 
-        background: #FFFFFF; /* Fari tsantsa */
+        max-width: 850px; 
+        margin: 40px auto; 
+        background: rgba(255, 255, 255, 0.95); 
         border-radius: 30px; 
         padding: 3rem; 
-        box-shadow: 0 15px 40px rgba(13, 71, 161, 0.2); 
-        border: 4px solid #FFC107;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.6); 
+        border: 5px solid #FFC107;
     }}
     
-    /* 3. LOGO MAI GIRMA */
-    .logo-container {{text-align: center; margin-bottom: 25px;}}
-    .logo-container img {{
-        border-radius: 30px; 
-        border: 6px solid #FFC107; 
-        width: 200px; /* NA KARA GIRMA LOGO */
-        height: 200px; 
-        object-fit: cover;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }}
-    
-    /* 4. RUBUTU MAI GIRMA */
+    /* 3. RUBUTU MAI GIRMA SOSAI CAPITAL */
     .title {{
         text-align: center; 
         color: #0D47A1; 
-        font-size: 45px; 
+        font-size: 48px; 
         font-weight: 900; 
-        margin-bottom: 10px;
-    }}
-    .welcome {{
-        text-align: center; 
-        color: #000000; 
-        font-size: 22px; 
-        margin-bottom: 35px;
-        font-weight: 700;
+        margin-bottom: 15px;
+        text-transform: uppercase;
     }}
     
-    /* 5. INPUTS DA LABELS */
-    label {{color: #0D47A1 !important; font-weight: 800 !important; font-size: 20px !important;}}
+    .welcome {{
+        text-align: center; 
+        color: #000; 
+        font-size: 18px; /* NA KARA GIRMA */
+        margin-bottom: 35px;
+        font-weight: 800;
+        line-height: 1.8; /* SARARI TSAYIN LAYI */
+        white-space: pre-line; /* DON YA MUTSA LAYI */
+        text-transform: uppercase; /* CAPITAL BAKI DAYA */
+    }}
+    
+    /* 4. INPUTS DA LABELS MAI KATO */
+    label {{color: #0D47A1 !important; font-weight: 900 !important; font-size: 22px !important; text-transform: uppercase;}}
     
     .stTextInput>div>div>input, .stNumberInput>div>div>input {{
         border-radius: 15px; 
         border: 4px solid #0D47A1;
         background: white;
         color: black;
-        font-weight: 800;
-        font-size: 20px; 
-        padding: 14px;
-        height: 3.2em;
+        font-weight: 900;
+        font-size: 22px; 
+        padding: 16px;
+        height: 3.5em;
+        text-transform: capitalize;
     }}
     
-    .stRadio > div {{background: #FFF8E1; padding: 18px; border-radius: 15px; border: 3px solid #FFC107;}}
-    .stRadio label {{font-size: 19px !important; font-weight: 700 !important;}}
+    .stRadio > div {{background: #FFF8E1; padding: 20px; border-radius: 15px; border: 3px solid #FFC107;}}
+    .stRadio label {{font-size: 20px !important; font-weight: 800 !important; text-transform: uppercase;}}
     
-    /* 6. BUTTON MAI KATO */
+    /* 5. BUTTON MAI KATO SOSAI */
     .stButton>button {{
         background: linear-gradient(90deg, #FFC107 0%, #0D47A1 100%); 
         color: white; 
         border-radius: 20px; 
-        height: 4.2em; 
+        height: 4.5em; 
         width: 100%; 
-        font-size: 26px; 
+        font-size: 28px; /* MAI GIRMA SOSAI */
         font-weight: 900; 
         border: none;
-        margin-top: 20px;
-        letter-spacing: 1px;
+        margin-top: 25px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
     }}
     .stButton>button:hover {{transform: scale(1.05); transition: 0.3s;}}
     
-    .stAlert {{font-size: 18px !important; font-weight: 700 !important;}}
+    .stAlert {{font-size: 20px !important; font-weight: 800 !important; text-transform: uppercase;}}
     
-    @media (max-width: 750px) {{
+    @media (max-width: 850px) {{
         .main-container {{padding: 1.8rem; margin: 15px;}}
-        .title {{font-size: 34px;}}
-        .welcome {{font-size: 18px;}}
-        .logo-container img {{width: 150px; height: 150px;}}
+        .title {{font-size: 32px;}}
+        .welcome {{font-size: 15px;}}
     }}
     </style>
 """, unsafe_allow_html=True)
@@ -130,52 +128,59 @@ def load_users():
         return pd.DataFrame(columns=["Suna", "Jinsi", "Shekaru", "Lokacin Register", "Device/Browser"])
 
 device_info = streamlit_js_eval(js_expressions='navigator.userAgent', key='ua')
-menu = st.sidebar.radio("📋 Menu", ["Form Na Register", "Shafin Admin 🔒"])
+menu = st.sidebar.radio("📋 MENU", ["FORM NA REGISTER", "SHAFIN ADMIN 🔒"])
 
-if menu == "Form Na Register":
+if menu == "FORM NA REGISTER":
     st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    
-    if logo:
-        st.markdown(f'<div class="logo-container"><img src="data:image/png;base64,{logo}"></div>', unsafe_allow_html=True)
-    else:
-        st.warning("⚠️ Logo bai samu ba. Ka tabbatar sunan fayil din daidai ne: `logo.png`")
         
-    st.markdown('<p class="title">🦜 Form Na Masu Aure</p>', unsafe_allow_html=True)
-    st.markdown('<p class="welcome">Barka da zuwa! Cika bayanan ka domin duba cancantarka 😼</p>', unsafe_allow_html=True)
+    st.markdown('<p class="title">🖥️ FORM NA ALI UMAR</p>', unsafe_allow_html=True)
+    
+    welcome_text = """INA MAIYI MUKU BARKA DA ZIYARTAR SHAFINA SUNANA ALI UMAR MUHAMMAD NI DALIBIN CYBER SECURITY NE WANNAN WEBSITE DIN NA KIR KIRESHINE DOMIN TEST DAKUMA GWAJE GWAJE NA HARKAR PYTHON PROGRAMMING 
+
+ZAKU IYA CIKA SUNANKU DA SHEKARUNKU WANNAN WEBSITE DIN INDAI KAFADA MASA 
+SHEKARUNKA DAIDAI ZAIFADA MAKA KA KAI KAYI AURE NE KO BAKA KAIBA🙄
+
+🤣🤣🤣😄😂😂😂 WANNAN SHINE LOKACIN FARKO DANA FARA KIR KIRAN ABU 
+
+🖥️🖥️🖥️🙏 INA MAI YIMUKU GODIYA DA ZIYARTAR SHAFINA🫣
+
+🙏NAGODE"""
+    
+    st.markdown(f'<p class="welcome">{welcome_text}</p>', unsafe_allow_html=True)
 
     with st.form("register_form", clear_on_submit=True):
-        suna = st.text_input("1. Meye sunanka?")
-        shekaru = st.number_input("2. Shekarunka nawa?", min_value=1, max_value=100, step=1)
-        jinsi = st.radio("3. Kai NAMIJI ne ko MACE?", ["NAMIJI", "MACE"], horizontal=True)
-        submitted = st.form_submit_button("Aika Form 🚀")
+        suna = st.text_input("1. MEYE SUNANKA?")
+        shekaru = st.number_input("2. SHEKARUNKA NAWA?", min_value=1, max_value=100, step=1)
+        jinsi = st.radio("3. KAI NAMIJI NE KO MACE?", ["NAMIJI", "MACE"], horizontal=True)
+        submitted = st.form_submit_button("AIKA FORM 🚀")
 
         if submitted:
             if suna and shekaru:
                 lokaci = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 save_user(suna, jinsi, shekaru, lokaci, device_info)
-                st.success(f"Barka da zuwa {suna}!", icon="✅")
-                if shekaru >= 18: st.info(f"An karbe ka! Ka girma kakai Aure ✅")
-                else: st.warning(f"Baka kai Aureba. Kajira shekara {18 - shekaru} tukunnan ❌")
-                if shekaru >= 35: st.error("Kai ka wuce Aure. Ka yi girma sosai 😂")
+                st.success(f"BARKA DA ZUWA {suna}!", icon="✅")
+                if shekaru >= 18: st.info(f"AN KARBE KA! KA GIRMA KAKAI AURE ✅")
+                else: st.warning(f"BAKA KAI AUREBA. KAJIRA SHEKARA {18 - shekaru} TUKUNNAN ❌")
+                if shekaru >= 35: st.error("KAI KA WUCE AURE. KA YI GIRMA SOSAI 😂")
                 st.balloons()
-            else: st.error("Taf, da fatan ka cika dukkan bayanai")
+            else: st.error("TAF, DA FATAN KA CIKA DUKKAN BAYANAI")
     
     st.markdown('</div>', unsafe_allow_html=True)
 
-elif menu == "Shafin Admin 🔒":
+elif menu == "SHAFIN ADMIN 🔒":
     st.markdown('<div class="main-container">', unsafe_allow_html=True)
-    st.markdown('<p class="title">🔐 Shafin Admin</p>', unsafe_allow_html=True)
-    password = st.text_input("Shigar da password na admin", type="password")
+    st.markdown('<p class="title">🔐 SHAFIN ADMIN</p>', unsafe_allow_html=True)
+    password = st.text_input("SHIGAR DA PASSWORD NA ADMIN", type="password")
     if password == ADMIN_PASSWORD:
         df = load_users()
         if not df.empty:
-            st.success("Barka da zuwa Admin!", icon="👑")
+            st.success("BARKA DA ZUWA ADMIN!", icon="👑")
             col1, col2, col3 = st.columns(3)
-            with col1: st.metric("Jimilla", len(df))
-            with col2: st.metric("Mazaje", len(df[df["Jinsi"] == "NAMIJI"]))
-            with col3: st.metric("Mata", len(df[df["Jinsi"] == "MACE"]))
+            with col1: st.metric("JIMILLA", len(df))
+            with col2: st.metric("MAZAJE", len(df[df["Jinsi"] == "NAMIJI"]))
+            with col3: st.metric("MATA", len(df[df["Jinsi"] == "MACE"]))
             st.dataframe(df, use_container_width=True)
-            st.download_button("📥 Sauke Data", df.to_csv(index=False).encode('utf-8'), "masu_aure.csv", "text/csv")
-        else: st.info("Babu wanda ya yi register tukuna")
-    elif password: st.error("Password ba daidai ba ne ❌")
+            st.download_button("📥 SAUKE DATA", df.to_csv(index=False).encode('utf-8'), "masu_aure.csv", "text/csv")
+        else: st.info("BABU WANDA YA YI REGISTER TUKUNA")
+    elif password: st.error("PASSWORD BA DAIDAI BA NE ❌")
     st.markdown('</div>', unsafe_allow_html=True)

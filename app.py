@@ -17,13 +17,13 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-img = get_img_as_base64("wa_image_6507695863678731215") 
+img = get_img_as_base64("logo.jpg") 
 
-# ====== CSS MAI GIRMA SOSAI - DUK RUBUTU BAKI ======
+# ====== CSS MAI GIRMA SOSAI - DUK RUBUTU BAKI DAIDAI ======
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-    html, body, [class*="css"] {{font-family: 'Poppins', sans-serif; color: #000 !important;}} /* DUK RUBUTU BAKI */
+    html, body, [class*="css"] {{font-family: 'Poppins', sans-serif; color: #000000 !important;}}
     
     .main {{background: linear-gradient(135deg, #0a0f1e 0%, #1a237e 100%); padding: 2rem;}}
     .stApp {{max-width: 700px; margin: auto; background: white; border-radius: 25px; padding: 2.5rem; box-shadow: 0 15px 40px rgba(255,193,7,0.3); border: 4px solid #FFC107;}}
@@ -31,22 +31,19 @@ st.markdown(f"""
     .logo-container {{text-align: center; margin-bottom: 20px;}}
     .logo-container img {{border-radius: 50%; border: 5px solid #FFC107; width: 140px; height: 140px; object-fit: cover;}}
     
-    /* DUKKAN KANUNAN RUBUTU SUN ZAMA GIRMA DA BAKI */
-    .title {{text-align: center; color: #000000; font-size: 42px; font-weight: 900; margin-bottom: 10px;}}
-    .welcome {{text-align: center; color: #000000; font-size: 22px; font-weight: 600; margin-bottom: 30px;}}
+    .title {{text-align: center; color: #000000; font-size: 42px; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px;}}
+    .welcome {{text-align: center; color: #000; font-size: 22px; font-weight: 600; margin-bottom: 30px;}}
     h3 {{color: #000000 !important; font-size: 28px !important; font-weight: 700 !important;}}
-    label {{color: #000 !important; font-size: 20px !important; font-weight: 700 !important;}}
+    label {{color: #000000 !important; font-size: 20px !important; font-weight: 700 !important;}}
+    .stText {{color: #000000 !important; font-size: 18px !important;}}
     
-    /* INPUTS SUNYI GIRMA */
-    .stTextInput>div>div>input, .stNumberInput>div>div>input {{border-radius: 12px; border: 3px solid #000000; font-size: 20px !important; color: #000000 !important; padding: 12px;}}
+    .stTextInput>div>div>input, .stNumberInput>div>div>input {{border-radius: 12px; border: 3px solid #000; font-size: 20px !important; color: #000 !important; padding: 12px; font-weight: 600;}}
     .stRadio > div {{background: linear-gradient(90deg, #FFF8E1 0%, #E3F2FD 100%); padding: 15px; border-radius: 12px; border: 2px solid #000;}}
     .stRadio label {{font-size: 20px !important; font-weight: 700 !important; color: #000000 !important;}}
     
-    /* BUTTON MAI GIRMA */
-    .stButton>button {{background: linear-gradient(90deg, #FFC107 0%, #1a237e 100%); color: white !important; border-radius: 18px; height: 4em; width: 100%; font-size: 24px !important; font-weight: 900; border: none;}}
-    .stButton>button:hover {{transform: scale(1.03); transition: 0.3s;}}
+    .stButton>button {{background: linear-gradient(90deg, #FFC107 0%, #1a237e 100%); color: #FFFFFF !important; border-radius: 18px; height: 4em; width: 100%; font-size: 24px !important; font-weight: 900; border: none; letter-spacing: 1px;}}
+    .stButton>button:hover {{transform: scale(1.03); transition: 0.3s; box-shadow: 0 8px 20px rgba(255,193,7,0.5);}}
     
-    /* SAKAMAKO MAI GIRMA SOSAI */
     .result-box {{
         font-size: 32px !important; 
         font-weight: 900 !important; 
@@ -54,15 +51,16 @@ st.markdown(f"""
         padding: 25px; 
         border-radius: 20px; 
         margin-top: 20px;
-        color: #000 !important;
+        color: #000000 !important;
+        line-height: 1.5;
     }}
     .success-result {{background-color: #C8E6C9; border: 3px solid #2E7D32;}}
     .warning-result {{background-color: #FFF9C4; border: 3px solid #F9A825;}}
     .error-result {{background-color: #FFCDD2; border: 3px solid #C62828;}}
     
-    /* ADMIN */
-    [data-testid="stMetricValue"] {{font-size: 40px !important; color: #000 !important;}}
-    [data-testid="stMetricLabel"] {{font-size: 18px !important; color: #000 !important;}}
+    [data-testid="stMetricValue"] {{font-size: 40px !important; color: #000000 !important; font-weight: 900;}}
+    [data-testid="stMetricLabel"] {{font-size: 18px !important; color: #000000 !important; font-weight: 700;}}
+    .stDataFrame {{font-size: 16px !important;}}
     
     @media (max-width: 700px) {{
         .stApp {{padding: 1.5rem; margin: 10px;}}
@@ -70,11 +68,12 @@ st.markdown(f"""
         .welcome {{font-size: 18px;}}
         label {{font-size: 18px !important;}}
         .result-box {{font-size: 26px !important;}}
+        .stButton>button {{font-size: 20px !important;}}
     }}
     </style>
 """, unsafe_allow_html=True)
 
-# Aiki na daukar bayanai
+# Aiki na daukar bayanai da adana su
 def save_user(suna, jinsi, shekaru, lokaci, device_info):
     if not os.path.exists(FILE_NAME):
         df = pd.DataFrame(columns=["Suna", "Jinsi", "Shekaru", "Lokacin Register", "Device/Browser"])
@@ -90,12 +89,14 @@ def load_users():
     else:
         return pd.DataFrame(columns=["Suna", "Jinsi", "Shekaru", "Lokacin Register", "Device/Browser"])
 
+# Daukar bayanai na waya/browser
 device_info = streamlit_js_eval(js_expressions='navigator.userAgent', key='ua')
 
-menu = st.sidebar.radio("📋 Menu", ["Form Na Register", "Shafin Admin 🔒"])
+# ====== MENU NA SAMA ======
+menu = st.sidebar.radio("📋 MENU", ["FORM NA REGISTER", "SHAFIN ADMIN 🔒"])
 
 # ====== SHAGI 1: NA JAMA'A ======
-if menu == "Form Na Register":
+if menu == "FORM NA REGISTER":
     st.markdown(f'<div class="logo-container"><img src="data:image/jpeg;base64,{img}"></div>', unsafe_allow_html=True)
     st.markdown('<p class="title">🦜 FORM NA MASU AURE</p>', unsafe_allow_html=True)
     st.markdown('<p class="welcome">BARKA DA ZUWA! CIKA BAYANANKA DOMIN DUBA CANCANTARKA</p>', unsafe_allow_html=True)
@@ -113,7 +114,7 @@ if menu == "Form Na Register":
                 
                 # SAKAMAKO MAI GIRMA SOSAI
                 if shekaru >= 18 and shekaru < 35:
-                    st.markdown(f'<div class="result-box success-result">✅ BARKA {suna.upper()}! <br> AN KARBE KA! KAI GIRMACE KAKAI AURE</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="result-box success-result">✅ BARKA {suna.upper()}! <br> AN KARBE KA! <br> KAI GIRMACE KAKAI AURE</div>', unsafe_allow_html=True)
                 elif shekaru < 18:
                     shekaru_dazuwa = 18 - shekaru
                     st.markdown(f'<div class="result-box warning-result">❌ HABA {suna.upper()}! <br> BAKA KAI AUREBA. <br> KAJIRA SHEKARA {shekaru_dazuwa} TUKUNAN</div>', unsafe_allow_html=True)
@@ -125,7 +126,7 @@ if menu == "Form Na Register":
                 st.markdown(f'<div class="result-box error-result">⚠️ TAF! DA FATAN KA CIKA DUKKAN BAYANAI</div>', unsafe_allow_html=True)
 
 # ====== SHAGI 2: NA ADMIN ======
-elif menu == "Shafin Admin 🔒":
+elif menu == "SHAFIN ADMIN 🔒":
     st.markdown('<p class="title">🔐 SHAFIN ADMIN</p>', unsafe_allow_html=True)
     password = st.text_input("SHIGAR DA PASSWORD NA ADMIN", type="password")
 

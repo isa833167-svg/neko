@@ -17,8 +17,8 @@ def get_img_as_base64(file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-# MUHIMMI: Sunan hoton nan dole ya zama kamar yadda zaka upload a github
-img = get_img_as_base64("wa_image_6507695863678731215") 
+# GYARA: Na canza sunan zuwa na ka na gaskiya
+img = get_img_as_base64("1734809626335.jpg")
 
 # ====== CSS MAI KYAU DA LAUNIN PARROT ======
 st.markdown(f"""
@@ -41,6 +41,7 @@ st.markdown(f"""
     .stButton>button {{background: linear-gradient(90deg, #FFC107 0%, #1a237e 100%); color: white; border-radius: 15px; height: 3.5em; width: 100%; font-size: 18px; font-weight: 700; border: none;}}
     .stButton>button:hover {{transform: scale(1.03); transition: 0.3s; box-shadow: 0 5px 15px rgba(255,193,7,0.4);}}
     
+    /* Don waya */
     @media (max-width: 650px) {{
         .stApp {{padding: 1.2rem; margin: 10px;}}
         .title {{font-size: 28px;}}

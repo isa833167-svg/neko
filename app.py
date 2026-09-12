@@ -1,4 +1,8 @@
 import streamlit as st
+
+st.image("logo.png", width=150)
+st.title("Form Na Masu Aure")
+import streamlit as st
 import pandas as pd
 import os
 from datetime import datetime

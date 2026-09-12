@@ -10,7 +10,7 @@ st.set_page_config(page_title="Form Na Neko", page_icon="🦜", layout="wide")
 FILE_NAME = "masu_aure.csv"
 ADMIN_PASSWORD = "ALI@123" 
 
-# ====== KARANTAR HOTUNA ======
+# ====== KARANTAR LOGO KAWAI ======
 @st.cache_data
 def get_img_as_base64(file):
     try:
@@ -21,31 +21,27 @@ def get_img_as_base64(file):
         return ""
 
 logo = get_img_as_base64("logo.png") 
-bg = get_img_as_base64("1734809626335.jpg")
 
-# ====== CSS MAI RUBUTU MAI GIRMA ======
+# ====== CSS MAI FARI - BABU BACKGROUND ======
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
     html, body, [class*="css"] {{font-family: 'Poppins', sans-serif;}}
     
-    /* 1. BACKGROUND DIN PARROT */
+    /* 1. NA SANYA BACKGROUND YA ZAMA FARINE KAWAI */
     .stApp {{
-        background-image: url("data:image/jpeg;base64,{bg}");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+        background: #F5F7FA; /* Launi mai sanyi */
     }}
     
-    /* 2. KATIN FARI MAI KARFI */
+    /* 2. KATIN FARI MAI GIRMA */
     .main-container {{
         max-width: 750px; 
-        margin: 40px auto; 
-        background: rgba(255, 255, 255, 0.98); 
+        margin: 50px auto; 
+        background: #FFFFFF; /* Fari tsantsa */
         border-radius: 30px; 
         padding: 3rem; 
-        box-shadow: 0 25px 60px rgba(0,0,0,0.5); 
-        border: 5px solid #FFC107;
+        box-shadow: 0 15px 40px rgba(13, 71, 161, 0.2); 
+        border: 4px solid #FFC107;
     }}
     
     /* 3. LOGO MAI GIRMA */
@@ -53,30 +49,30 @@ st.markdown(f"""
     .logo-container img {{
         border-radius: 30px; 
         border: 6px solid #FFC107; 
-        width: 180px; /* Na kara girma */
-        height: 180px; 
+        width: 200px; /* NA KARA GIRMA LOGO */
+        height: 200px; 
         object-fit: cover;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }}
     
-    /* 4. RUBUTU MAI GIRMA SOSAI */
+    /* 4. RUBUTU MAI GIRMA */
     .title {{
         text-align: center; 
         color: #0D47A1; 
-        font-size: 45px; /* NA KARA GIRMA */
+        font-size: 45px; 
         font-weight: 900; 
         margin-bottom: 10px;
     }}
     .welcome {{
         text-align: center; 
-        color: #000000; /* Baki mai duhu sosai */
-        font-size: 22px; /* NA KARA GIRMA */
+        color: #000000; 
+        font-size: 22px; 
         margin-bottom: 35px;
         font-weight: 700;
     }}
     
-    /* 5. INPUTS DA LABELS MAI GIRMA */
-    label {{color: #0D47A1 !important; font-weight: 800 !important; font-size: 20px !important;}} /* LABEL */
+    /* 5. INPUTS DA LABELS */
+    label {{color: #0D47A1 !important; font-weight: 800 !important; font-size: 20px !important;}}
     
     .stTextInput>div>div>input, .stNumberInput>div>div>input {{
         border-radius: 15px; 
@@ -84,22 +80,22 @@ st.markdown(f"""
         background: white;
         color: black;
         font-weight: 800;
-        font-size: 20px; /* NA KARA GIRMA */
+        font-size: 20px; 
         padding: 14px;
         height: 3.2em;
     }}
     
     .stRadio > div {{background: #FFF8E1; padding: 18px; border-radius: 15px; border: 3px solid #FFC107;}}
-    .stRadio label {{font-size: 19px !important; font-weight: 700 !important;}} /* RADIO */
+    .stRadio label {{font-size: 19px !important; font-weight: 700 !important;}}
     
-    /* 6. BUTTON MAI KATO SOSAI */
+    /* 6. BUTTON MAI KATO */
     .stButton>button {{
         background: linear-gradient(90deg, #FFC107 0%, #0D47A1 100%); 
         color: white; 
         border-radius: 20px; 
         height: 4.2em; 
         width: 100%; 
-        font-size: 26px; /* NA KARA GIRMA */
+        font-size: 26px; 
         font-weight: 900; 
         border: none;
         margin-top: 20px;
@@ -107,14 +103,13 @@ st.markdown(f"""
     }}
     .stButton>button:hover {{transform: scale(1.05); transition: 0.3s;}}
     
-    /* NA SAKE GIRMA SUCCESS/ERROR MESSAGES */
     .stAlert {{font-size: 18px !important; font-weight: 700 !important;}}
     
     @media (max-width: 750px) {{
         .main-container {{padding: 1.8rem; margin: 15px;}}
         .title {{font-size: 34px;}}
         .welcome {{font-size: 18px;}}
-        .logo-container img {{width: 130px; height: 130px;}}
+        .logo-container img {{width: 150px; height: 150px;}}
     }}
     </style>
 """, unsafe_allow_html=True)

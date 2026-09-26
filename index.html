@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>This Social Media is created by Bakura</title>
+<link rel="stylesheet" href="test.css">
+</head>
+<body>
+<div class="page active black" id="p-intro">
+ <div class="tik-welcome">
+  <div class="logo-b">B</div>
+  <h1>This Social Media is<br><span class="tik-gradient">created by</span><br>Bakura</h1>
+  <p>The home for viral creators. Upload. Go viral. Earn.</p>
+  <button class="btn tik-btn" onclick="go('p-auth')">Get Started</button>
+  <button class="btn admin-visible" onclick="aliClick()">🔒 ALI - ADMIN REMOTE CONTROL</button>
+ </div>
+</div>
+
+<div class="page black" id="p-auth">
+ <div class="auth-wrap">
+  <h2>Create account</h2>
+  <div class="tabs"><button class="tab active" onclick="setAuth('reg',this)">Sign up</button><button class="tab" onclick="setAuth('login',this)">Log in</button></div>
+  <form id="f-reg" class="form active">
+    <input id="rName" placeholder="Full Name e.g. Ali Umar" required>
+    <select id="rGender" required><option value="">Select Gender</option><option value="Male">Male ♂️</option><option value="Female">Female ♀️</option></select>
+    <div class="row"><select id="ccR"><option value="+234">🇳🇬 +234</option><option value="+1">🇺🇸 +1</option><option value="+44">🇬🇧 +44</option></select><input id="rPhone" placeholder="Phone number" required></div>
+    <div class="pass"><input type="password" id="rP1" placeholder="Create Password" required><i onclick="tog('rP1',this)">👁️</i></div>
+    <div class="pass"><input type="password" id="rP2" placeholder="Confirm Password" required><i onclick="tog('rP2',this)">👁️</i></div>
+    <button class="btn tik-btn" type="submit">Create account</button>
+  </form>
+  <form id="f-log" class="form">
+    <div class="row"><select id="ccL"><option value="+234">🇳🇬 +234</option><option value="+1">🇺🇸 +1</option></select><input id="lId" placeholder="Phone" required></div>
+    <div class="pass"><input type="password" id="lPass" placeholder="Password" required><i onclick="tog('lPass',this)">👁️</i></div>
+    <button class="btn white-btn" type="submit">Log in</button>
+  </form>
+  <p class="back" onclick="go('p-intro')">← Back</p>
+ </div>
+</div>
+
+<div class="page black" id="p-main">
+  <div class="marquee"><span>Promote? Chat Bakura 09039095389 | Boost ₦1000 Palmpay 9039095389 ALI UMAR MUHAMMAD |</span></div>
+  <div class="boost"><div><b>Boost</b><br><small>9039095389</small></div><button onclick="openM('boostM')">Get Verified ✓</button></div>
+  <div id="feed"></div>
+  <div class="nav"><div class="n active" onclick="renderFeed()">Home</div><div class="n" onclick="openM('chatM')">Chat</div><div class="n" onclick="openM('callM')">Call</div><div class="n" onclick="openM('profileM')">Profile</div></div>
+  <div class="fab" onclick="document.getElementById('up').click()">+</div><input type="file" id="up" hidden accept="video/*" onchange="newVid(this)">
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="profileM"><div class="box dark"><div class="box-head"><h3>Profile</h3><span onclick="closeM('profileM')">✕</span></div><div class="center"><div id="pPhoto" class="avatar">B</div><h4 id="pName"></h4><p id="pGender"></p><p id="pPhone"></p><p id="pBlue"></p></div><button class="btn admin-visible" onclick="closeM('profileM'); aliClick()">🔒 OPEN ALI REMOTE</button><button class="btn outline-dark" onclick="logout()">Log out</button></div></div>
+<div class="modal" id="boostM"><div class="box dark"><div class="box-head"><h3>Get Blue Tick</h3><span onclick="closeM('boostM')">✕</span></div><div style="padding:18px"><p style="color:#aaa;font-size:13px">Send <b style="color:#fff">₦1000 to Palmpay 9039095389 ALI UMAR MUHAMMAD</b><br>Fake IDs are blocked!</p><input id="txn" placeholder="Transaction ID min 10 chars"><button class="btn tik-btn" onclick="doBoost()">Submit</button><p id="boostErr" style="color:#ff3b30;font-size:12px"></p></div></div></div>
+<div class="modal" id="chatM"><div class="box dark"><div class="box-head"><h3>Messages</h3><span onclick="closeM('chatM')">✕</span></div><div style="padding:20px;color:#666">Chat needs backend - coming soon</div></div></div>
+<div class="modal" id="callM"><div class="box dark"><div class="box-head"><h3>Calls</h3><span onclick="closeM('callM')">✕</span></div><div style="padding:20px;color:#666">Call needs backend</div></div></div>
+<div class="page black" id="p-admin"><div style="padding:20px"><h2>ALI REMOTE - All Control</h2><small>Security:.ALI39096617@Kali linux.</small><div id="adminContent"></div><button class="btn white-btn" onclick="go('p-main')">Back</button></div></div>
+</div>
+<script src="test.js"></script>
+</body>
+</html>
